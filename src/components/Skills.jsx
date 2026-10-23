@@ -1,54 +1,62 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { FaJs, FaReact, FaNodeJs, FaPython, FaDatabase, FaJava } from "react-icons/fa";
+import {
+  FaJs,
+  FaReact,
+  FaNodeJs,
+  FaPython,
+  FaDatabase,
+  FaJava,
+} from "react-icons/fa";
 import { BiLogoPostgresql } from "react-icons/bi";
 import { RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
 import { CgFigma } from "react-icons/cg";
 
+const skills = [
+  { id: 1, name: "JavaScript", icon: <FaJs size={50} /> },
+  { id: 2, name: "React", icon: <FaReact size={50} /> },
+  { id: 3, name: "Node.js", icon: <FaNodeJs size={50} /> },
+  { id: 4, name: "Python", icon: <FaPython size={50} /> },
+  { id: 5, name: "MongoDB", icon: <FaDatabase size={50} /> },
+  { id: 6, name: "Java", icon: <FaJava size={50} /> },
+  { id: 7, name: "PostgreSQL", icon: <BiLogoPostgresql size={50} /> },
+  { id: 8, name: "Next.js", icon: <RiNextjsFill size={50} /> },
+  { id: 9, name: "Tailwind CSS", icon: <RiTailwindCssFill size={50} /> },
+  { id: 10, name: "Figma", icon: <CgFigma size={50} /> },
+];
+
+const experiences = [
+  {
+    id: 1,
+    company: "DevOrbital",
+    role: "Software Development Engineer",
+    period: "Apr 2025 - Sep 2026",
+    description: [
+      "Built an asynchronous queue-based notification system using Redis queues, decoupling API alerts to deliver 50,000+ daily notifications with 99.9% uptime.",
+      "Optimized REST APIs and MongoDB aggregation pipelines via compound indexing and compression, cutting p95 latency by 18% (320ms to 260ms).",
+      "Replaced polling with full-duplex WebSocket telemetry channels, reducing live state synchronization latency by 65%.",
+      "Engineered an internal role-based access control (RBAC) admin platform, reducing operational task completion time by 35%.",
+    ],
+    logo: "/assets/devorbital.jpeg",
+  },
+  {
+    id: 2,
+    company: "Hello Art & Design Pvt. Ltd.",
+    role: "Backend Developer Intern",
+    period: "Jan 2025 - Apr 2025",
+    description: [
+      "Architected a real-time order tracking microservice for a quick-commerce app using Socket.IO room channels, reducing driver-to-customer synchronization latency by 40%.",
+      "Engineered stateless JWT authentication with bcrypt hashing and HTTP-only cookies, securing end-to-end user workflows.",
+      "Refactored inventory services with atomic MongoDB updates ($inc, $set), eliminating race conditions and boosting checkout throughput by 30%.",
+    ],
+    logo: "/assets/hrt.webp",
+  },
+];
+
 export default function Skills() {
-  const [skills] = useState([
-    { id: 1, name: "JavaScript", icon: <FaJs size={50} /> },
-    { id: 2, name: "React", icon: <FaReact size={50} /> },
-    { id: 3, name: "Node.js", icon: <FaNodeJs size={50} /> },
-    { id: 4, name: "Python", icon: <FaPython size={50} /> },
-    { id: 5, name: "MongoDB", icon: <FaDatabase size={50} /> },
-    { id: 6, name: "Java", icon: <FaJava size={50} /> },
-    { id: 7, name: "Postgresql", icon: <BiLogoPostgresql size={50} /> },
-    { id: 8, name: "Next.js", icon: <RiNextjsFill size={50} /> },
-    { id: 9, name: "Tailwind", icon: <RiTailwindCssFill size={50} /> },
-    { id: 10, name: "Figma", icon: <CgFigma size={50} /> },
-  ]);
-
-  const [experiences] = useState([
-    {
-      id: 1,
-      company: "DevOrbital",
-      role: "Software Developer Engineer",
-      period: "Apr 2025 - Sep 2026",
-      description:
-      "•Built an asynchronous queue-based notification system using Redis queues, decoupling API alerts to deliver 50,000+ daily notifications with 99.9% uptime.
-• Optimized REST APIs and MongoDB aggregation pipelines via compound indexing and compression, cutting p95latency by 18% (320ms to 260ms).
-• Replaced polling with full-duplex WebSocket telemetry channels, reducing live state sync latency by 65%.
-• Engineered an internal role-based access control (RBAC) admin platform, reducing operational task completion time by 35%",
-      logo: "/assets/devorbital.jpeg",
-    },
-    {
-      id: 2,
-      company: "Hello Art & Design Pvt. Ltd.",
-      role: "Backend Developer Intern",
-      period: "Jan 2025 - Apr 2025",
-      description:
-        "• Architected a real-time order tracking microservice for a quick-commerce app using Socket.IO room channels, reducing driver-to-customer sync latency by 40%.
-• Engineered stateless JWT authentication with bcrypt hashing and HTTP-only cookies, securing end-to-end user workflows.
-• Refactored inventory services with atomic MongoDB updates ($inc, $set), eliminating race conditions and boosting checkout throughput by 30%",
-      logo: "/assets/hrt.webp",
-    },
-  ]);
-
   return (
     <div className="mt-3 lg:mt-16" id="skills">
       <div className="px-5 lg:px-28">
-
         <motion.h2
           className="text-2xl lg:text-4xl text-center"
           initial={{ opacity: 0, y: -20 }}
@@ -56,7 +64,8 @@ export default function Skills() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <span className="hover:text-gray-500">My</span> <span className="font-extrabold hover:text-gray-500">Skills</span>
+          <span className="hover:text-gray-500">My</span>{" "}
+          <span className="font-extrabold hover:text-gray-500">Skills</span>
         </motion.h2>
 
         {/* Skill Cards */}
@@ -67,7 +76,11 @@ export default function Skills() {
               className="bg-white border-2 hover:bg-black hover:text-white transition-all cursor-pointer border-black rounded p-3 h-36 w-36 lg:h-44 lg:w-44 flex flex-col items-center justify-center gap-5"
               initial={{ opacity: 0, y: 5 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: skill.id * 0.1 }}
+              transition={{
+                duration: 0.8,
+                ease: "easeOut",
+                delay: skill.id * 0.1,
+              }}
               viewport={{ once: true }}
             >
               {skill.icon}
@@ -75,7 +88,6 @@ export default function Skills() {
             </motion.div>
           ))}
         </div>
-
       </div>
 
       {/* Experience Section */}
@@ -108,22 +120,31 @@ export default function Skills() {
             >
               <div className="flex justify-between flex-col items-start lg:flex-row lg:items-center">
                 <div className="flex items-center gap-5">
-                  <img className="w-7" src={exp.logo} alt="" />
+                  <img
+                    className="w-7"
+                    src={exp.logo}
+                    alt={`${exp.company} logo`}
+                    loading="lazy"
+                  />
+
                   <h2 className="font-semibold text-white text-lg lg:text-xl">
                     {exp.role} at {exp.company}
                   </h2>
                 </div>
+
                 <span className="text-[#D4D4D8] font-semibold text-sm mt-4 lg:mt-0 lg:text-base">
                   {exp.period}
                 </span>
               </div>
-              <p className="text-[#D4D4D8] mt-6 text-sm/6 lg:text-base font-light">
-                {exp.description}
-              </p>
+
+              <ul className="text-[#D4D4D8] mt-6 text-sm/6 lg:text-base font-light space-y-2 list-disc pl-5">
+                {exp.description.map((point, pointIndex) => (
+                  <li key={pointIndex}>{point}</li>
+                ))}
+              </ul>
             </motion.div>
           ))}
         </div>
-
       </div>
     </div>
   );
