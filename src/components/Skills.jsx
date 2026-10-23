@@ -24,9 +24,12 @@ export default function Skills() {
       id: 1,
       company: "DevOrbital",
       role: "Software Developer Engineer",
-      period: "Apr 2025 - Jun 2026",
+      period: "Apr 2025 - Sep 2026",
       description:
-      "Architected and implemented a React Native mobile app, delivering a responsive frontend and scalable backend for a high-performance user experience. Developed secure RESTful APIs with Node.js and Express.js, enhancing data retrieval efficiency by 20%. Built a dynamic reporting dashboard for internal teams, reducing data analysis time by 40%. Worked in an Agile team, driving iterative feature development and improving code quality through rigorous testing.",
+      "•Built an asynchronous queue-based notification system using Redis queues, decoupling API alerts to deliver 50,000+ daily notifications with 99.9% uptime.
+• Optimized REST APIs and MongoDB aggregation pipelines via compound indexing and compression, cutting p95latency by 18% (320ms to 260ms).
+• Replaced polling with full-duplex WebSocket telemetry channels, reducing live state sync latency by 65%.
+• Engineered an internal role-based access control (RBAC) admin platform, reducing operational task completion time by 35%",
       logo: "/assets/devorbital.jpeg",
     },
     {
@@ -35,7 +38,9 @@ export default function Skills() {
       role: "Backend Developer Intern",
       period: "Jan 2025 - Apr 2025",
       description:
-        "Built authentication and real-time order tracking using Socket.io for a quick-commerce platform, improving user retention by 20%. Developed an admin panel that reduced operational task time by 30%. Collaborated in an Agile team to optimize API performance, reducing latency by 15%.",
+        "• Architected a real-time order tracking microservice for a quick-commerce app using Socket.IO room channels, reducing driver-to-customer sync latency by 40%.
+• Engineered stateless JWT authentication with bcrypt hashing and HTTP-only cookies, securing end-to-end user workflows.
+• Refactored inventory services with atomic MongoDB updates ($inc, $set), eliminating race conditions and boosting checkout throughput by 30%",
       logo: "/assets/hrt.webp",
     },
   ]);
