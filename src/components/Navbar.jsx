@@ -21,7 +21,7 @@ export default function Navbar() {
     const section = document.getElementById(id);
     if (section) {
       window.scrollTo({
-        top: section.offsetTop - 110,
+        top: section.getBoundingClientRect().top + window.scrollY - 110,
         behavior: "smooth",
       });
     }
@@ -65,6 +65,8 @@ export default function Navbar() {
 
         <motion.a
           href={LINKS.resume}
+          target="_blank"
+          rel="noopener noreferrer"
           className="hidden relative lg:inline-block px-4 py-2 font-medium group"
         >
           <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
@@ -112,6 +114,8 @@ export default function Navbar() {
               ))}
               <motion.a
                 href={LINKS.resume}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="relative inline-block px-4 py-2 font-semibold group"
                 whileHover={{ scale: 1.1 }}
               >

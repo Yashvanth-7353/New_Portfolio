@@ -15,11 +15,11 @@ export default function Achievements() {
         My <span className="font-extrabold">Achievements</span>
       </motion.h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 mt-7 lg:mt-16">
+      <div className="mt-6 lg:mt-16 border-y-2 border-black divide-y-2 divide-black">
         {ACHIEVEMENTS.map((achievement) => (
           <motion.div
             key={achievement.title}
-            className="bg-white border-2 border-black rounded-md p-5"
+            className="flex items-start gap-3 lg:gap-5 py-4 lg:py-5"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -28,27 +28,31 @@ export default function Achievements() {
               damping: 10,
             }}
           >
-            <div className="flex items-start justify-between gap-3">
-              <h3 className="font-semibold text-base lg:text-lg">
+            <span
+              className="mt-2 lg:mt-2.5 w-2 h-2 shrink-0 rounded-full bg-black"
+              aria-hidden="true"
+            />
+
+            <div className="flex-1 flex flex-col lg:flex-row lg:items-baseline gap-1 lg:gap-6">
+              <h3 className="font-semibold text-base lg:text-lg lg:w-[26rem] lg:shrink-0">
                 {achievement.title}
               </h3>
-
-              {achievement.link && (
-                <a
-                  href={achievement.link}
-                  className="shrink-0 hover:text-gray-500 transition"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Open certificate for ${achievement.title}`}
-                >
-                  <TbExternalLink size={20} />
-                </a>
-              )}
+              <p className="text-[#71717A] font-light text-sm/6 lg:text-base flex-1">
+                {achievement.detail}
+              </p>
             </div>
 
-            <p className="text-[#71717A] font-light text-sm/6 lg:text-base mt-3">
-              {achievement.detail}
-            </p>
+            {achievement.link && (
+              <a
+                href={achievement.link}
+                className="shrink-0 hover:text-gray-500 transition"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open certificate for ${achievement.title}`}
+              >
+                <TbExternalLink size={20} />
+              </a>
+            )}
           </motion.div>
         ))}
       </div>

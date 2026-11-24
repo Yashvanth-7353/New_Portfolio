@@ -13,17 +13,18 @@ import CustomCursor from './utils/CursorAnimation'
 
 export default function App() {
   return (
-    <div className='font-sora scroll-smooth overflow-x-hidden'>
+    <div className='font-sora'>
+      <div className='scroll-progress fixed top-0 left-0 right-0 h-[2px] bg-black scale-x-0 z-[60]' aria-hidden='true' />
       <CustomCursor/>
       <Navbar />
       <Home />
-      <About />
-      <Education />
-      <Experience />
-      <Skills />
-      <Projects />
-      <Achievements />
-      <Contact />
+      <div className='section-reveal'><About /></div>
+      <div className='section-reveal'><Education /></div>
+      <div className='section-reveal'><Experience /></div>
+      <div className='section-reveal'><Skills /></div>
+      <div className='section-reveal'><Projects /></div>
+      <div className='section-reveal'><Achievements /></div>
+      <div className='section-reveal'><Contact /></div>
 
       <Footer />
     </div>

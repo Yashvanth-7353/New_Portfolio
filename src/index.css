@@ -3,3 +3,50 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Clip sideways overflow without making the document a scroll container,
+   which would leave view() timelines unable to progress. */
+html {
+  overflow-x: clip;
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Scroll-driven effects                                                     */
+/*  Pure CSS so content is never left hidden if the browser lacks support     */
+/* -------------------------------------------------------------------------- */
+
+@keyframes section-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .section-reveal {
+    animation: section-reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 0%;
+  }
+}
+
+@keyframes scroll-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    transform-origin: left;
+    animation: scroll-progress linear;
+    animation-timeline: scroll(root block);
+  }
+}

@@ -60,6 +60,7 @@ export const LINKS = {
 
 export const NAV_LINKS = [
   { id: "about", label: "About" },
+  { id: "education", label: "Education" },
   { id: "experience", label: "Experience" },
   { id: "skills", label: "Tech Stack" },
   { id: "projects", label: "Projects" },
@@ -304,10 +305,10 @@ export const SKILLS = [
 ];
 
 /**
- * Icons for the skill cards, keyed by the exact item names in SKILLS.
+ * Icons for each skill item, keyed by the exact names used in SKILLS.
  * Items without a brand icon fall back to a generic code icon.
  */
-export const SKILL_ICONS = {
+const SKILL_ICONS = {
   "C++": SiCplusplus,
   Python: FaPython,
   JavaScript: FaJs,

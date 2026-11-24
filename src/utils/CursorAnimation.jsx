@@ -39,10 +39,17 @@ export default function CustomCursor() {
 
   return (
     <motion.div
-      className="fixed bg-black border-2 border-white rounded-full pointer-events-none mix-blend-difference z-50"
-      style={{ width: cursorSize, height: cursorSize }}
-      animate={{ x: cursorPosition.x - cursorSize / 2, y: cursorPosition.y - cursorSize / 2 }}
-      transition={{ type: "spring", stiffness: 200, damping: 20 }}
+      className="fixed top-0 left-0 bg-black border-2 border-white rounded-full pointer-events-none mix-blend-difference z-50"
+      style={{
+        width: cursorSize,
+        height: cursorSize,
+        // Keep the circle's centre pinned to the pointer; using margins instead of
+        // doubling the offset into x/y keeps it aligned when the size changes.
+        marginLeft: -cursorSize / 2,
+        marginTop: -cursorSize / 2,
+      }}
+      animate={{ x: cursorPosition.x, y: cursorPosition.y }}
+      transition={{ type: "spring", stiffness: 700, damping: 45, mass: 0.4 }}
     />
   );
 }
