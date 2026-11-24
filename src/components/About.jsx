@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ABOUT_CONTENT } from '../constants';
 
 export default function About() {
   return (
@@ -11,7 +12,7 @@ export default function About() {
         transition={{ type: "spring", stiffness: 80, damping: 10 }}
         viewport={{ once: true }}
       >
-        <img src="/assets/about-me.svg" alt="About Me Illustration" />
+        <img src={ABOUT_CONTENT.image.src} alt={ABOUT_CONTENT.image.alt} />
       </motion.div>
 
       <motion.div
@@ -22,17 +23,12 @@ export default function About() {
         viewport={{ once: true }}
       >
         <h2 className="lg:text-4xl text-2xl mt-4 lg:mt-0">
-          <span className="hover:text-gray-500">About</span>  <span className="font-extrabold hover:text-gray-500">Me</span>
+          <span className="hover:text-gray-500">{ABOUT_CONTENT.title}</span>  <span className="font-extrabold hover:text-gray-500">{ABOUT_CONTENT.subtitle}</span>
         </h2>
 
         <p className="text-[#71717A] text-sm/6 lg:text-base mt-5 lg:mt-10">
 
-Hi, I’m Rajat Chakraborty a passionate Full-Stack Web & Mobile Developer with a love for building interactive, user-friendly, and scalable digital experiences.
-With expertise in Next.js, React.js, Django, Node.js, and Three.js, I enjoy crafting applications that are not only functional but also visually engaging.
-
-I have hands-on experience developing real-time applications, 3D web experiences, and mobile apps, and I thrive on turning ideas into well-designed, high-performing products. Beyond coding, I value clean architecture, collaborative teamwork, and continuous learning to stay ahead in tech.
-
-When I’m not coding, you’ll probably find me exploring new design trends, experimenting with emerging technologies, or enjoying a good cup of coffee.
+{ABOUT_CONTENT.bio}
 
         </p>
 

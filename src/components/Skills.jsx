@@ -1,57 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  FaJs,
-  FaReact,
-  FaNodeJs,
-  FaPython,
-  FaDatabase,
-  FaJava,
-} from "react-icons/fa";
-import { BiLogoPostgresql } from "react-icons/bi";
-import { RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
-import { CgFigma } from "react-icons/cg";
-
-const skills = [
-  { id: 1, name: "JavaScript", icon: <FaJs size={50} /> },
-  { id: 2, name: "React", icon: <FaReact size={50} /> },
-  { id: 3, name: "Node.js", icon: <FaNodeJs size={50} /> },
-  { id: 4, name: "Python", icon: <FaPython size={50} /> },
-  { id: 5, name: "MongoDB", icon: <FaDatabase size={50} /> },
-  { id: 6, name: "Java", icon: <FaJava size={50} /> },
-  { id: 7, name: "PostgreSQL", icon: <BiLogoPostgresql size={50} /> },
-  { id: 8, name: "Next.js", icon: <RiNextjsFill size={50} /> },
-  { id: 9, name: "Tailwind CSS", icon: <RiTailwindCssFill size={50} /> },
-  { id: 10, name: "Figma", icon: <CgFigma size={50} /> },
-];
-
-const experiences = [
-  {
-    id: 1,
-    company: "DevOrbital",
-    role: "Software Development Engineer",
-    period: "Apr 2025 - Sep 2026",
-    description: [
-      "Built an asynchronous queue-based notification system using Redis queues, decoupling API alerts to deliver 50,000+ daily notifications with 99.9% uptime.",
-      "Optimized REST APIs and MongoDB aggregation pipelines via compound indexing and compression, cutting p95 latency by 18% (320ms to 260ms).",
-      "Replaced polling with full-duplex WebSocket telemetry channels, reducing live state synchronization latency by 65%.",
-      "Engineered an internal role-based access control (RBAC) admin platform, reducing operational task completion time by 35%.",
-    ],
-    logo: "/assets/devorbital.jpeg",
-  },
-  {
-    id: 2,
-    company: "Hello Art & Design Pvt. Ltd.",
-    role: "Backend Developer Intern",
-    period: "Jan 2025 - Apr 2025",
-    description: [
-      "Architected a real-time order tracking microservice for a quick-commerce app using Socket.IO room channels, reducing driver-to-customer synchronization latency by 40%.",
-      "Engineered stateless JWT authentication with bcrypt hashing and HTTP-only cookies, securing end-to-end user workflows.",
-      "Refactored inventory services with atomic MongoDB updates ($inc, $set), eliminating race conditions and boosting checkout throughput by 30%.",
-    ],
-    logo: "/assets/hrt.webp",
-  },
-];
+import { SKILL_CARDS, EXPERIENCE } from "../constants";
 
 export default function Skills() {
   return (
@@ -70,28 +19,32 @@ export default function Skills() {
 
         {/* Skill Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 text-lg font-bold mt-7 lg:mt-16 w-full place-items-center gap-y-6 lg:gap-y-12">
-          {skills.map((skill) => (
-            <motion.div
-              key={skill.id}
-              className="bg-white border-2 hover:bg-black hover:text-white transition-all cursor-pointer border-black rounded p-3 h-36 w-36 lg:h-44 lg:w-44 flex flex-col items-center justify-center gap-5"
-              initial={{ opacity: 0, y: 5 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                ease: "easeOut",
-                delay: skill.id * 0.1,
-              }}
-              viewport={{ once: true }}
-            >
-              {skill.icon}
-              <p>{skill.name}</p>
-            </motion.div>
-          ))}
+          {SKILL_CARDS.map((skill) => {
+            const Icon = skill.icon;
+
+            return (
+              <motion.div
+                key={skill.id}
+                className="bg-white border-2 hover:bg-black hover:text-white transition-all cursor-pointer border-black rounded p-3 h-36 w-36 lg:h-44 lg:w-44 flex flex-col items-center justify-center gap-5"
+                initial={{ opacity: 0, y: 5 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.8,
+                  ease: "easeOut",
+                  delay: skill.id * 0.1,
+                }}
+                viewport={{ once: true }}
+              >
+                <Icon size={50} />
+                <p>{skill.name}</p>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
 
       {/* Experience Section */}
-      <div className="bg-black w-full my-8 py-8 lg:my-16 lg:py-16">
+      <div className="bg-black w-full my-8 py-8 lg:my-16 lg:py-16" id="experience">
         <motion.h2
           className="text-2xl lg:text-4xl text-center text-white"
           initial={{ opacity: 0, y: -20 }}
@@ -104,7 +57,7 @@ export default function Skills() {
 
         {/* Experience Cards */}
         <div className="px-5 lg:px-28 my-8 lg:mt-16 space-y-10">
-          {experiences.map((exp, index) => (
+          {EXPERIENCE.map((exp, index) => (
             <motion.div
               key={exp.id}
               className="bg-black p-5 border border-[#D4D4D8] rounded-md hover:bg-[#27272A] transition-all cursor-pointer"
@@ -120,12 +73,14 @@ export default function Skills() {
             >
               <div className="flex justify-between flex-col items-start lg:flex-row lg:items-center">
                 <div className="flex items-center gap-5">
-                  <img
-                    className="w-7"
-                    src={exp.logo}
-                    alt={`${exp.company} logo`}
-                    loading="lazy"
-                  />
+                  {exp.logo && (
+                    <img
+                      className="w-7"
+                      src={exp.logo}
+                      alt={`${exp.company} logo`}
+                      loading="lazy"
+                    />
+                  )}
 
                   <h2 className="font-semibold text-white text-lg lg:text-xl">
                     {exp.role} at {exp.company}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TbDownload } from "react-icons/tb";
 import { HiOutlineMenu, HiX } from "react-icons/hi";
+import { NAV_LINKS, LINKS, PERSONAL_INFO } from "../constants";
 
 export default function Navbar() {
   const [hasShadow, setHasShadow] = useState(false);
@@ -41,18 +42,18 @@ export default function Navbar() {
           onClick={() => scrollToSection("home")}
           className="text-2xl font-bold cursor-pointer"
         >
-          RAJAT
+          {PERSONAL_INFO.brand}
         </motion.div>
 
         <ul className="hidden lg:flex items-center gap-x-7 font-semibold">
-          {["about", "skills", "projects", "contact"].map((section) => (
+          {NAV_LINKS.map(({ id, label }) => (
             <motion.li
-              key={section}
+              key={id}
               className="group"
               whileHover={{ scale: 1.1 }}
             >
-              <button onClick={() => scrollToSection(section)}>
-                {section === "skills" ? "Skills & Experiences" : section.charAt(0).toUpperCase() + section.slice(1)}
+              <button onClick={() => scrollToSection(id)}>
+                {label}
               </button>
               <motion.span
                 className="w-0 transition-all duration-300 group-hover:w-full h-[2px] bg-black flex"
@@ -63,7 +64,7 @@ export default function Navbar() {
         </ul>
 
         <motion.a
-          href="https://drive.google.com/file/d/1BWFF9YBWaNRHQvRX2Xv3uoEhvhk2DYH2/view?usp=sharing"
+          href={LINKS.resume}
           className="hidden relative lg:inline-block px-4 py-2 font-medium group"
         >
           <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
@@ -98,19 +99,19 @@ export default function Navbar() {
               <HiX />
             </button>
             <ul className="flex flex-col items-start ml-16 mt-28 h-full gap-y-6 font-semibold">
-              {["about", "skills", "projects", "contact"].map((section) => (
+              {NAV_LINKS.map(({ id, label }) => (
                 <motion.li
-                  key={section}
+                  key={id}
                   className="border-b"
                   whileHover={{ scale: 1.1 }}
                 >
-                  <button onClick={() => scrollToSection(section)}>
-                    {section === "skills" ? "Skills & Experiences" : section.charAt(0).toUpperCase() + section.slice(1)}
+                  <button onClick={() => scrollToSection(id)}>
+                    {label}
                   </button>
                 </motion.li>
               ))}
               <motion.a
-                href="https://drive.google.com/file/d/1BWFF9YBWaNRHQvRX2Xv3uoEhvhk2DYH2/view?usp=sharing"
+                href={LINKS.resume}
                 className="relative inline-block px-4 py-2 font-semibold group"
                 whileHover={{ scale: 1.1 }}
               >
