@@ -5,7 +5,7 @@ import { HERO_CONTENT, SOCIAL_LINKS } from "../constants";
 
 export default function Home() {
   return (
-    <div className="mt-20" id="home">
+    <div className="mt-20 min-h-[calc(100vh-5rem)] flex flex-col justify-center" id="home">
       <div className="flex justify-between py-10 items-center px-5 lg:px-28 lg:flex-row flex-col-reverse">
         <motion.div
           className="lg:w-[45%]"

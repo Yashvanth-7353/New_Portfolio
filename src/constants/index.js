@@ -333,10 +333,11 @@ export const SKILL_ICONS = {
   Postman: SiPostman,
 };
 
-/** Flat list of skill cards used by the skill grid component. */
-export const SKILL_CARDS = SKILLS.flatMap(({ category, items }) =>
-  items.map((name) => ({ category, name, icon: SKILL_ICONS[name] ?? FaCode })),
-).map((skill, index) => ({ id: index + 1, ...skill }));
+/** Skill categories paired with their item icons, used by the skills section. */
+export const SKILL_GROUPS = SKILLS.map(({ category, items }) => ({
+  category,
+  items: items.map((name) => ({ name, icon: SKILL_ICONS[name] ?? FaCode })),
+}));
 
 /* -------------------------------------------------------------------------- */
 /*                                Achievements                                */

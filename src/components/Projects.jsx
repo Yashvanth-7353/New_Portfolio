@@ -5,7 +5,7 @@ import { PROJECTS } from '../constants';
 
 export default function Projects() {
   return (
-    <div className="bg-black px-5 lg:px-28 py-8 my-8 lg:py-16 lg:my-16" id="projects">
+    <div className="bg-black px-5 lg:px-28 min-h-screen flex flex-col justify-center py-8 lg:py-16" id="projects">
       <h2 className="text-2xl lg:text-4xl text-center text-white">
         My <span className="font-extrabold">Projects</span>
       </h2>
@@ -16,9 +16,8 @@ export default function Projects() {
             key={project.id}
             className={`flex justify-between items-center flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"}`}
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 80, damping: 10, delay: index * 0.2 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", stiffness: 80, damping: 10 }}
           >
             {project.image && (
               <div className="lg:w-[500px] w-full rounded-2xl overflow-hidden">
@@ -42,6 +41,17 @@ export default function Projects() {
   <p className="font-light text-sm/6 lg:text-base text-[#71717A]">
     {project.description}
   </p>
+
+  <div className="flex flex-wrap gap-2">
+    {project.tech.map((item) => (
+      <span
+        key={item}
+        className="text-[10px] lg:text-xs font-semibold text-[#D4D4D8] border border-[#D4D4D8] rounded px-2 py-1"
+      >
+        {item}
+      </span>
+    ))}
+  </div>
 
   {/* Icons */}
   <div className="flex items-center gap-4 mt-3">

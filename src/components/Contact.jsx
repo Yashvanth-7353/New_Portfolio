@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { IoMdMail } from "react-icons/io";
 import { FaPhone } from "react-icons/fa6";
 import emailjs from '@emailjs/browser';
@@ -8,7 +8,6 @@ import { CONTACT_CONTENT, LINKS, PERSONAL_INFO, SOCIAL_LINKS } from '../constant
 export default function Contact() {
   const ref = useRef(null);
   const formRef = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -113,14 +112,14 @@ export default function Contact() {
     <motion.div
       ref={ref}
       initial={{ opacity: 0 }}
-      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className='lg:my-16 lg:px-28 my-8 px-5'
+      className='lg:px-28 px-5 min-h-screen flex flex-col justify-center'
       id='contact'
     >
       <motion.h2
         initial={{ y: -50, opacity: 0 }}
-        animate={isInView ? { y: 0, opacity: 1 } : { opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
         className='text-2xl lg:text-4xl text-center'
       >
@@ -130,7 +129,7 @@ export default function Contact() {
       <div className='flex justify-between items-center mt-8 lg:mt-16 flex-col lg:flex-row'>
         <motion.div
           initial={{ x: -50, opacity: 0 }}
-          animate={isInView ? { x: 0, opacity: 1 } : { opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
           className='lg:w-[40%]'
         >
@@ -192,7 +191,7 @@ export default function Contact() {
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
               className='flex justify-between gap-3 lg:gap-5 flex-col lg:flex-row'
             >
@@ -234,7 +233,7 @@ export default function Contact() {
 
         <motion.div
           initial={{ x: 50, opacity: 0 }}
-          animate={isInView ? { x: 0, opacity: 1 } : { opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
           className='lg:w-1/2'
         >

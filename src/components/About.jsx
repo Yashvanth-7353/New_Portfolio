@@ -4,13 +4,12 @@ import { ABOUT_CONTENT } from '../constants';
 
 export default function About() {
   return (
-    <div className="px-5 lg:px-28 flex justify-between flex-col lg:flex-row gap-8 lg:gap-12" id="about">
+    <div className="px-5 lg:px-28 min-h-screen flex justify-center lg:justify-between flex-col lg:flex-row lg:items-center gap-8 lg:gap-12" id="about">
       <motion.div
         className="lg:w-1/2"
         initial={{ opacity: 0, x: -50 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        animate={{ opacity: 1, x: 0 }}
         transition={{ type: "spring", stiffness: 80, damping: 10 }}
-        viewport={{ once: true }}
       >
         <img src={ABOUT_CONTENT.image.src} alt={ABOUT_CONTENT.image.alt} />
       </motion.div>
@@ -18,9 +17,8 @@ export default function About() {
       <motion.div
         className="lg:w-1/2"
         initial={{ opacity: 0, x: 50 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        animate={{ opacity: 1, x: 0 }}
         transition={{ type: "spring", stiffness: 80, damping: 10, delay: 0.2 }}
-        viewport={{ once: true }}
       >
         <h2 className="lg:text-4xl text-2xl mt-4 lg:mt-0">
           <span className="hover:text-gray-500">{ABOUT_CONTENT.title}</span>  <span className="font-extrabold hover:text-gray-500">{ABOUT_CONTENT.subtitle}</span>
@@ -32,6 +30,18 @@ export default function About() {
 
         </p>
 
+        <div className="flex flex-wrap gap-x-10 gap-y-5 mt-8 lg:mt-10">
+          {ABOUT_CONTENT.stats.map((stat) => (
+            <div key={stat.label}>
+              <p className="font-extrabold text-2xl lg:text-4xl">
+                {stat.value}
+              </p>
+              <p className="text-[#71717A] text-sm mt-1">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </div>
 
       </motion.div>
     </div>
