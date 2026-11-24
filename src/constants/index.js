@@ -37,7 +37,7 @@ export const PERSONAL_INFO = {
   name: "YASHVANTH M U",
   firstName: "Yashvanth",
   brand: "YASHVANTH M U",
-  role: "Full Stack Engineer",
+  role: "Software Engineer",
   email: "yashavanth.mu870@gmail.com",
   phone: "+91 7353027029",
 };
@@ -85,11 +85,11 @@ export const HERO_CONTENT = {
   greeting: "HELLO, I AM",
   typedSequence: [PERSONAL_INFO.name, 1000],
   role: {
-    normal: "Full Stack",
+    normal: "Software",
     outlined: "Engineer.",
   },
   description:
-    "Software Engineering student at RVCE building full-stack systems with React, FastAPI, and Node.js. Experienced in cloud infrastructure (AWS EC2/ECR), Docker-based deployments, geospatial systems, and semantic search with FAISS.",
+    "I don’t just write code — I build systems that solve problems. Passionate about backend engineering, cloud technologies, and full-stack development, I turn ideas into reliable, practical products through thoughtful engineering and continuous learning.",
   image: {
     src: "/assets/hero-vector.svg",
     alt: "Hero Vector",
@@ -100,20 +100,22 @@ export const HERO_CONTENT = {
 /*                                 About section                              */
 /* -------------------------------------------------------------------------- */
 
+
 export const ABOUT_CONTENT = {
   title: "Background",
-  subtitle: "From Logic to Systems",
-  bio: "I got into coding because I wanted to build things that work, not just things that look like they work. Most of my projects started from a real problem — fake GPS reports, untracked complaints, deployment that only runs on my laptop. I pick up what I need to solve it, and I stay until it's actually done.",
+  subtitle: "Driven by Curiosity. Built Through Code.",
+  bio: "I turn complex ideas into practical software and real-world solutions. My work spans full-stack development, backend engineering, cloud infrastructure, AI, and IoT, using technologies like C++, Python, JavaScript, TypeScript, React, Next.js, Node.js, Express, and FastAPI. From building REST APIs and working with MongoDB and PostgreSQL to integrating AI models, implementing semantic search with FAISS, and deploying applications on AWS with Docker, I enjoy exploring technology beyond the surface. I'm driven by curiosity, a problem-solving mindset, and the challenge of building reliable systems that do more than just work — they make a difference.",
   stats: [
-    { label: "CGPA", value: "8.63" },
+    { label: "CGPA", value: "8.77" },
     { label: "Projects", value: "10+" },
-    { label: "LeetCode", value: "185+" },
+    { label: "LeetCode", value: "300+" },
   ],
   image: {
     src: "/assets/about-me.svg",
     alt: "About Me Illustration",
   },
 };
+
 
 /* -------------------------------------------------------------------------- */
 /*                                  Education                                 */
@@ -150,7 +152,7 @@ export const EDUCATION = [
 export const EXPERIENCE = [
   {
     id: 1,
-    role: "Software Engineering Intern",
+    role: "Web Developer Intern",
     company: "ImpactBridge",
     period: "March 2026 – June 2026",
     context:
@@ -394,8 +396,21 @@ export const CONTACT_CONTENT = {
     submitLabel: "Get In Touch",
     submittingLabel: "Sending...",
     successMessage: "✓ Message sent successfully! I'll get back to you soon.",
+    mailtoMessage:
+      "Your mail app is opening with the message filled in — press send there and it lands in my inbox. If nothing opened, use the email address on the right.",
     errorMessage:
       "⚠ Failed to send message. Please fill all required fields or try again later.",
+  },
+  // Right-hand "direct line" card.
+  panel: {
+    availability: "Open to work",
+    timezone: "Asia/Kolkata",
+    timezoneLabel: "IST",
+    location: "India · IST (GMT +5:30)",
+    headline: { first: "Let's", second: "talk." },
+    note: "This card skips the queue — the message goes straight to my inbox.",
+    copyLabel: "Copy",
+    copiedLabel: "Copied",
   },
   // Add your own EmailJS ids to enable the contact form (none were supplied).
   emailjs: {
